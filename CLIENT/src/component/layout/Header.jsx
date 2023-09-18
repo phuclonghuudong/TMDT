@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import "../../assets/css/Header.css";
 
 const Header = () => {
-     return (
-          <div className="container">
+     const topHeader = () => {
+          return (
                <div
                     className="carousel slide carousel-fade d-none d-md-block"
                     id="carouselExampleControls"
@@ -59,14 +58,20 @@ const Header = () => {
                          <span class="visually-hidden">Next</span>
                     </button>
                </div>
+          );
+     };
+     return (
+          <div className="container">
+               {topHeader()}
                <header className="row d-flex justify-content-between">
-                    <div className="col-md-3 col-sm-6 col-6">
+                    <div className="col-md-3 col-sm-4 col-6">
                          <img
                               src={require("../../assets/image/logo.jpg")}
                               alt=""
                          />
                     </div>
-                    <div className="col-md-3 col-12 col-sm-6 d-none d-sm-block">
+
+                    <div className="col-md-5 col-12 col-sm-5 d-none d-sm-block">
                          <div class="input-group mb-3 mt-3">
                               <input
                                    type="text"
@@ -76,7 +81,7 @@ const Header = () => {
                                    aria-describedby="button-addon2"
                               />
                               <button
-                                   class="btn btn-outline-warning"
+                                   class="btn btn-outline-secondary text-dark"
                                    type="button"
                                    id="button-addon2"
                               >
@@ -87,21 +92,22 @@ const Header = () => {
                               </button>
                          </div>
                     </div>
-                    <div className="col-md-4 col-6 col-sm-6 mt-3 mb-3 d-flex justify-content-center">
+
+                    <div className="col-md-4 col-6 col-sm-3 mt-3 mb-3 d-flex justify-content-center">
                          <div class="btn-group me-3">
                               <button
                                    type="button"
-                                   class="btn btn-outline-warning rounded"
+                                   class="btn btn-outline-secondary rounded text-dark"
                                    data-bs-toggle="dropdown"
                               >
-                                   <span className="d-none d-sm-block">
+                                   <span className="d-none d-lg-block">
                                         <i
                                              class="fa fa-user-o"
                                              aria-hidden="true"
                                         ></i>{" "}
-                                        My Cart
+                                        My Acount
                                    </span>
-                                   <i class="fa fa-user-o d-block d-sm-none"></i>
+                                   <i class="fa fa-user-o d-block d-lg-none"></i>
                               </button>
                               <ul class="dropdown-menu">
                                    <li>
@@ -133,12 +139,12 @@ const Header = () => {
                               </ul>
                          </div>
 
-                         <div class="btn-group me-3">
+                         <div class="btn-group me-3 ">
                               <button
                                    type="button"
-                                   class="btn btn-outline-warning position-relative rounded"
+                                   class="btn btn-outline-secondary position-relative rounded text-dark"
                               >
-                                   <span className="d-none d-sm-block">
+                                   <span className="d-none d-lg-block">
                                         <i
                                              class="fa fa-shopping-cart"
                                              aria-hidden="true"
@@ -146,7 +152,7 @@ const Header = () => {
                                         My Cart
                                    </span>
                                    <span>
-                                        <i class="fa fa-shopping-cart d-block d-sm-none"></i>
+                                        <i class="fa fa-shopping-cart d-block d-lg-none"></i>
                                    </span>
 
                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

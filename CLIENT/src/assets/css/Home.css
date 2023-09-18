@@ -1,0 +1,17 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+header {
+     background: #809a6f;
+}
+.navbar {
+     border-top: white solid 1px;
+     background: #809a68;
+}
+.image_sale {
+     width: 100%;
+     height: 450px;
+     border-radius: 10px;
+}

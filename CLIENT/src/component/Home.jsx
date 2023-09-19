@@ -4,6 +4,7 @@ import Header from "./layout/Header";
 import Navbar from "./layout/Navbar";
 import "../assets/css/Home.css";
 import Content from "./content/Content";
+import Footer from "./layout/Footer";
 
 const Home = () => {
      return (
@@ -11,6 +12,7 @@ const Home = () => {
                <Header />
                <Navbar />
                <Content />
+               <Footer />
           </>
      );
 };

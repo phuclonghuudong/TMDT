@@ -5,12 +5,12 @@ const Header = () => {
      const topHeader = () => {
           return (
                <div
-                    className="carousel slide carousel-fade d-none d-md-block"
+                    className="carousel slide carousel-fade d-none d-md-block "
                     id="carouselExampleControls"
                     data-bs-ride="carousel"
                >
                     <div class="carousel-inner">
-                         <div className="carousel-item active">
+                         <div className="carousel-item active ">
                               <img
                                    class="mx-auto d-block"
                                    src={require("../../assets/image/header_panner.jpg")}
@@ -63,7 +63,7 @@ const Header = () => {
      return (
           <div className="container">
                {topHeader()}
-               <header className="row d-flex justify-content-between">
+               <header className="row d-flex justify-content-between sticky-top">
                     <div className="col-md-3 col-sm-4 col-6">
                          <img
                               src={require("../../assets/image/logo.jpg")}
@@ -71,17 +71,17 @@ const Header = () => {
                          />
                     </div>
 
-                    <div className="col-md-5 col-12 col-sm-5 d-none d-sm-block">
+                    <div className="col-md-4 col-12 col-sm-4 d-none d-sm-block">
                          <div class="input-group mb-3 mt-3">
                               <input
                                    type="text"
-                                   class="form-control "
+                                   class="form-control border-warning"
                                    placeholder="Search...."
                                    aria-label="Recipient's username"
                                    aria-describedby="button-addon2"
                               />
                               <button
-                                   class="btn btn-outline-secondary text-dark"
+                                   class="btn btn-outline-warning text-dark border-warning"
                                    type="button"
                                    id="button-addon2"
                               >
@@ -138,8 +138,9 @@ const Header = () => {
                                    </li>
                               </ul>
                          </div>
+                         <div className="vr"></div>
 
-                         <div class="btn-group me-3 ">
+                         <div class="btn-group me-3 ms-3">
                               <button
                                    type="button"
                                    class="btn btn-outline-secondary position-relative rounded text-dark"

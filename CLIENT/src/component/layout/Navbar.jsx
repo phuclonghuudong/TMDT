@@ -2,9 +2,9 @@ import React from "react";
 
 const Navbar = () => {
      return (
-          <div className="container navbar d-flex justify-content-center fs-5 fw-bold">
+          <div className="container-fluild navbar d-flex justify-content-center fs-5 fw-bold bg-warning">
                <ul class="nav nav-pills nav-fill" id="ex1" role="tablist">
-                    <li class="nav-item ms-3" role="presentation">
+                    <li class="nav-item" role="presentation">
                          <a
                               class="btn btn-outline-warning nav-link text-dark "
                               id="ex2-tab-1"

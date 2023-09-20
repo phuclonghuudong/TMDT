@@ -26,7 +26,7 @@ const Content = () => {
                          </div>
 
                          <button
-                              className="carousel-control-prev"
+                              className="carousel-control-prev carousel-control-prev-sale"
                               type="button"
                               data-bs-target="#carouselExampleControlsSale"
                               data-bs-slide="prev"
@@ -38,7 +38,7 @@ const Content = () => {
                               <span className="visually-hidden">Previous</span>
                          </button>
                          <button
-                              className="carousel-control-next"
+                              className="carousel-control-next carousel-control-next-sale"
                               type="button"
                               data-bs-target="#carouselExampleControlsSale"
                               data-bs-slide="next"
@@ -155,12 +155,12 @@ const Content = () => {
                               <span className="badge bg-dark">00</span>{" "}
                          </span>
                          <span className="ms-4 fs-5 fw-bold mt-2">
-                              Đang diễn ra
+                              Đang diễn ra {"   "}
                               <br className="d-block d-lg-none" />
                               <span className="text-danger">10/9 - 15/9</span>
                          </span>
                     </div>
-                    <div className="card-body row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-2 ">
+                    <div className="card-body row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-2 bg-warning-subtle rounded">
                          {contentProductSale()}
                          {contentProductSale()}
                          {contentProductSale()}

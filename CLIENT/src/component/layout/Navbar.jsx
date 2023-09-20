@@ -1,12 +1,12 @@
 import React from "react";
 
 const Navbar = () => {
-     return (
-          <div className="container-fluild navbar d-flex justify-content-center fs-5 fw-bold bg-warning">
-               <ul class="nav nav-pills nav-fill" id="ex1" role="tablist">
+     const navbarMenu = () => {
+          return (
+               <>
                     <li class="nav-item" role="presentation">
                          <a
-                              class="btn btn-outline-warning nav-link text-dark "
+                              class="btn btn-outline-secondary nav-link text-dark "
                               id="ex2-tab-1"
                               data-mdb-toggle="pill"
                               href="#ex2-pills-1"
@@ -14,13 +14,13 @@ const Navbar = () => {
                               aria-controls="ex2-pills-1"
                               aria-selected="true"
                          >
-                              <i class="fa fa-mobile" aria-hidden="true"></i>{" "}
-                              Điện thoại
+                              {/* <i class="fa fa-mobile" aria-hidden="true"></i>{" "} */}
+                              Trang chủ
                          </a>
                     </li>
                     <li class="nav-item ms-3" role="presentation">
                          <a
-                              class="btn btn-outline-warning nav-link text-dark "
+                              class="btn btn-outline-secondary nav-link text-dark "
                               id="ex2-tab-2"
                               data-mdb-toggle="pill"
                               href="#ex2-pills-2"
@@ -28,8 +28,8 @@ const Navbar = () => {
                               aria-controls="ex2-pills-2"
                               aria-selected="false"
                          >
-                              <i class="fa fa-laptop" aria-hidden="true"></i>{" "}
-                              Laptop
+                              {/* <i class="fa fa-laptop" aria-hidden="true"></i>{" "} */}
+                              Sản phẩm
                          </a>
                     </li>
                     <li class="nav-item ms-3" role="presentation">
@@ -42,16 +42,16 @@ const Navbar = () => {
                               aria-controls="ex2-pills-3"
                               aria-selected="false"
                          >
-                              <i
+                              {/* <i
                                    class="fa fa-headphones"
                                    aria-hidden="true"
-                              ></i>{" "}
-                              Phụ kiện
+                              ></i>{" "} */}
+                              Liên hệ
                          </a>
                     </li>
                     <li class="nav-item ms-3 " role="presentation">
                          <a
-                              class="btn btn-outline-warning nav-link text-dark"
+                              class="btn btn-outline-secondary nav-link text-dark"
                               id="ex2-tab-3"
                               data-mdb-toggle="pill"
                               href="#ex2-pills-3"
@@ -59,12 +59,43 @@ const Navbar = () => {
                               aria-controls="ex2-pills-3"
                               aria-selected="false"
                          >
-                              <i class="fa fa-clock-o" aria-hidden="true"></i>{" "}
-                              Đồng hồ
+                              {/* <i class="fa fa-clock-o" aria-hidden="true"></i>{" "} */}
+                              Tin tức
                          </a>
                     </li>
-               </ul>
-          </div>
+               </>
+          );
+     };
+     return (
+          <>
+               <div className="container navbar d-flex justify-content-center fs-5 fw-bold border-top border-bottom mb-1 d-none d-md-block">
+                    <ul class="nav nav-pills nav-fill" id="ex1" role="tablist">
+                         {navbarMenu()}
+                    </ul>
+               </div>
+               <div className="container navbar d-md-none">
+                    <span
+                         className="ps-3 fs-1 fw-bold"
+                         data-bs-toggle="collapse"
+                         href="#collapseExampleMenu"
+                         role="button"
+                         aria-expanded="false"
+                         aria-controls="collapseExample"
+                    >
+                         <i class="fa fa-bars" aria-hidden="true"></i>
+                    </span>
+
+                    <div class="collapse fw-bold fs-5" id="collapseExampleMenu">
+                         <ul
+                              class="nav nav-pills nav-fill"
+                              id="ex1"
+                              role="tablist"
+                         >
+                              {navbarMenu()}
+                         </ul>
+                    </div>
+               </div>
+          </>
      );
 };
 

@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import Product from "./Product";
+import Carousel from "react-multi-carousel";
 
 const Content = () => {
+     const number = 10;
      const contentSale = () => {
           return (
                <>
@@ -11,7 +14,7 @@ const Content = () => {
                          data-bs-ride="carousel"
                     >
                          <div className="carousel-inner">
-                              <div className="carousel-item active">
+                              <div className="carousel-item active ">
                                    <img
                                         className="image_sale w-100"
                                         src={require("../../assets/image/sale_2.jpg")}
@@ -53,91 +56,27 @@ const Content = () => {
                </>
           );
      };
-     const contentProductSale = () => {
-          return (
-               <div className="col">
-                    <div className="card pt-2">
-                         <img
-                              src={require("../../assets/image/ip14pro256.jpg")}
-                              className="card-img-top w-75 mx-auto"
-                              alt="..."
-                         />
-                         <div className="card-body">
-                              <h5 className="card-title text-center fs-6 col-12 text-truncate">
-                                   Iphone 14 Pro 256GB
-                              </h5>
-                              <div className="">
-                                   <span className="me-1 ps-1 pe-1 bg-secondary bg-opacity-25">
-                                        6.7"
-                                   </span>
-                                   <span className="ps-1 pe-1 bg-secondary bg-opacity-25">
-                                        Full HD
-                                   </span>
-                              </div>
-                              <div className="my-1">
-                                   <button className="btn button-custom btn-sm">
-                                        64GB Xanh
-                                   </button>
-                                   <button className="btn button-custom btn-sm">
-                                        128GB
-                                   </button>
-                                   <button className="btn button-custom btn-sm">
-                                        1T Trắng
-                                   </button>
-                              </div>
-                              <h5 className="card-text fw-bold text-danger text-center fs-5 mb-0">
-                                   8.999.000 đ
-                              </h5>
-                              <div className="text-center mb-2 ">
-                                   <span className="card-text text-secondary text-opacity-50 text-center text-sale me-2">
-                                        8.000.000 đ
-                                   </span>
-                                   <span className="bg-danger text-sale1 bg-opacity-25 ms-2 rounded ps-1 pe-1 fw-bold">
-                                        -10%
-                                   </span>
-                              </div>
-                              <div className="text-center">
-                                   <i
-                                        class="fa fa-star pe-1 text-warning"
-                                        aria-hidden="true"
-                                   ></i>
-                                   <i
-                                        class="fa fa-star pe-1 text-warning"
-                                        aria-hidden="true"
-                                   ></i>
-                                   <i
-                                        class="fa fa-star-half-o pe-1 text-warning"
-                                        aria-hidden="true"
-                                   ></i>
-                                   <i
-                                        class="fa fa-star-o pe-1 text-warning"
-                                        aria-hidden="true"
-                                   ></i>
-                                   <i
-                                        class="fa fa-star-o pe-1 text-secondary"
-                                        aria-hidden="true"
-                                   ></i>
-                              </div>
-                              <div
-                                   className="progress"
-                                   role="progressbar"
-                                   aria-label="Info example"
-                                   aria-valuenow="50"
-                                   aria-valuemin="0"
-                                   aria-valuemax="100"
-                              >
-                                   <div
-                                        className="progress-bar progress-bar-striped bg-warning overflow-visible text-dark fw-bold progress-bar-animated"
-                                        style={{ width: "70%" }}
-                                   >
-                                        <span className=" ">Còn 4/10 xuất</span>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-          );
+
+     const responsive = {
+          superLargeDesktop: {
+               // the naming can be any, depends on you.
+               breakpoint: { max: 3000, min: 1024 },
+               items: 6,
+          },
+          desktop: {
+               breakpoint: { max: 1024, min: 856 },
+               items: 4,
+          },
+          tablet: {
+               breakpoint: { max: 856, min: 464 },
+               items: 2,
+          },
+          mobile: {
+               breakpoint: { max: 464, min: 0 },
+               items: 1,
+          },
      };
+
      return (
           <div className="container">
                {contentSale()}
@@ -160,18 +99,23 @@ const Content = () => {
                               <span className="text-danger">10/9 - 15/9</span>
                          </span>
                     </div>
-                    <div className="card-body row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-2 bg-warning-subtle rounded">
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                         {contentProductSale()}
-                    </div>
+                    {/* <div className="card-body row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-2 bg-warning-subtle rounded"> */}
+                    <Carousel responsive={responsive}>
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                         <Product />
+                    </Carousel>
+
+                    {/* </div> */}
                </div>
           </div>
      );

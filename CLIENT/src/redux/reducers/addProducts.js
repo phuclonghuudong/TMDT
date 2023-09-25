@@ -1,19 +1,19 @@
 const initialState = {
-     desk: [],
+     item: [],
 };
 
 const addProducts = (state = initialState, action) => {
      switch (action.type) {
           case "ADD_PRODUCT":
-               const productEXist = state.desk.find(
+               const productEXist = state.item.find(
                     (i) => i.id === action.payload.id
                );
                if (!productEXist) {
                     return {
-                         desk: [...state.desk, action.payload],
+                         item: [...state.item, action.payload],
                     };
                } else {
-                    let newdesk = state.desk;
+                    let newdesk = state.item;
                     const objIndex = newdesk.findIndex(
                          (obj) => obj.id === action.payload.id
                     );
@@ -23,17 +23,17 @@ const addProducts = (state = initialState, action) => {
                          newdesk[objIndex].quantity =
                               newdesk[objIndex].quantity + 1;
                     }
-                    return { desk: [...newdesk] };
+                    return { item: [...newdesk] };
                }
                break;
           case "DEL_PRODUCT":
-               const newDesk = state.desk;
+               const newDesk = state.item;
                const objIndex = newDesk.findIndex(
                     (obj) => obj.id === action.payload.id
                );
                newDesk[objIndex].quantity = 1;
                newDesk.splice(objIndex, 1);
-               return { desk: [...newDesk] };
+               return { item: [...newDesk] };
 
                break;
 

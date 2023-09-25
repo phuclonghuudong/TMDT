@@ -1,7 +1,26 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { DEL_PRODUCT } from "../../redux/actions";
+import store from "../../redux/store";
 
 const Header = () => {
+     const [number, setNumber] = useState(0);
+     const product = useSelector((state) => state.addProduct);
+
+     useEffect(() => {
+          if (product && product.item.length > 0) {
+               setNumber(product.item.length);
+          } else {
+               setNumber(0);
+          }
+     }, [product]);
+
+     const handleDeleteCard = (item) => {
+          store.dispatch(DEL_PRODUCT(item));
+     };
+
      const topHeader = () => {
           return (
                <div
@@ -62,35 +81,13 @@ const Header = () => {
      };
      return (
           <div className="container">
-               {topHeader()}
+               {/* {topHeader()} */}
                <header className="row d-flex justify-content-between sticky-top">
                     <div className="col-md-3 col-sm-4 col-6">
                          <img
                               src={require("../../assets/image/logo.jpg")}
                               alt=""
                          />
-                    </div>
-
-                    <div className="col-md-4 col-12 col-sm-4 d-none d-sm-block">
-                         <div class="input-group mb-3 mt-3">
-                              <input
-                                   type="text"
-                                   class="form-control border-warning"
-                                   placeholder="Search...."
-                                   aria-label="Recipient's username"
-                                   aria-describedby="button-addon2"
-                              />
-                              <button
-                                   class="btn btn-outline-warning text-dark border-warning"
-                                   type="button"
-                                   id="button-addon2"
-                              >
-                                   <i
-                                        class="fa fa-search"
-                                        aria-hidden="true"
-                                   ></i>
-                              </button>
-                         </div>
                     </div>
 
                     <div className="col-md-4 col-6 col-sm-3 mt-3 mb-3 d-flex justify-content-center">
@@ -140,10 +137,13 @@ const Header = () => {
                          </div>
                          <div className="vr"></div>
 
-                         <div class="btn-group me-3 ms-3">
+                         <div class="btn-group me-3 ms-3 dropdown">
                               <button
                                    type="button"
-                                   class="btn btn-outline-secondary position-relative rounded text-dark"
+                                   class="btn btn-outline-secondary position-relative rounded text-dark "
+                                   id="dropdownMenuButton1"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false"
                               >
                                    <span className="d-none d-lg-block">
                                         <i
@@ -157,9 +157,57 @@ const Header = () => {
                                    </span>
 
                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        999+
+                                        {number && +number > 0 ? number : 0}
                                    </span>
                               </button>
+                              <ul
+                                   class="dropdown-menu"
+                                   aria-labelledby="dropdownMenuLink"
+                              >
+                                   {product && product.item.length > 0
+                                        ? product.item.map((item) => {
+                                               return (
+                                                    <div className="content-card row">
+                                                         <div className="col-2">
+                                                              <img
+                                                                   className="image-card"
+                                                                   src={
+                                                                        item.image
+                                                                   }
+                                                              />
+                                                         </div>
+                                                         <div className="col-6">
+                                                              <p className="text-truncate">
+                                                                   {item.title}
+                                                              </p>
+                                                         </div>
+                                                         <div className="col-2">
+                                                              <p className="text-truncate">
+                                                                   x
+                                                                   {!item.quantity
+                                                                        ? 1
+                                                                        : item.quantity}
+                                                              </p>
+                                                         </div>
+                                                         <div className="col-2 ">
+                                                              <span
+                                                                   onClick={() =>
+                                                                        handleDeleteCard(
+                                                                             item
+                                                                        )
+                                                                   }
+                                                              >
+                                                                   <i
+                                                                        class="fa fa-trash text-danger"
+                                                                        aria-hidden="true"
+                                                                   ></i>
+                                                              </span>
+                                                         </div>
+                                                    </div>
+                                               );
+                                          })
+                                        : ""}
+                              </ul>
                          </div>
                     </div>
                </header>

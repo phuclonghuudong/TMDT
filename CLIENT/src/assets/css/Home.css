@@ -84,3 +84,58 @@ h6,
      font-weight: 500;
      color: black;
 }
+.card-img-top {
+     height: 200px;
+     object-fit: cover;
+     display: block;
+     transition: all 0.5s ease;
+}
+.card-img-top:hover {
+     opacity: 50%;
+}
+.card {
+     border-radius: 10px 10px 0 0 !important;
+}
+.card-img {
+     display: flex;
+     justify-content: center;
+     overflow: hidden;
+}
+.card-img:hover img {
+     transform: scale(1.1) !important;
+}
+.btn-add-to-card {
+     width: 100%;
+     border-radius: 0 0 10px 10px !important;
+     overflow: hidden !important;
+     height: 40px;
+}
+.btn-add-to-card:hover p {
+     font-weight: 400;
+     transform: scale(1.1) !important;
+}
+.input-search {
+     border-radius: 5px 0 0 5px !important;
+}
+.search-product {
+     width: 400px;
+     justify-content: center;
+     height: 100%;
+     display: flex;
+}
+.btn-search {
+     border-radius: 0 5px 5px 0 !important;
+}
+.dropdown-menu {
+     width: 20rem !important;
+}
+.content-card {
+     padding-left: 5px !important;
+     font-size: 15px;
+     display: flex;
+}
+.image-card {
+     width: 50px;
+     height: 50px;
+     /* object-fit: cover; */
+}

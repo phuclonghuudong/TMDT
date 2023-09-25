@@ -1,61 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import Carousel from "react-multi-carousel";
+import { getAllFakeApi } from "../../services/apiServices";
 
 const Content = () => {
      const number = 10;
-     const contentSale = () => {
-          return (
-               <>
-                    <div
-                         className="carousel slide carousel-fade d-none d-md-block"
-                         id="carouselExampleControlsSale"
-                         data-bs-ride="carousel"
-                    >
-                         <div className="carousel-inner">
-                              <div className="carousel-item active ">
-                                   <img
-                                        className="image_sale w-100"
-                                        src={require("../../assets/image/sale_2.jpg")}
-                                   />
-                              </div>
-                              <div className="carousel-item ">
-                                   <img
-                                        className="image_sale"
-                                        src={require("../../assets/image/sale_1.jpg")}
-                                   />
-                              </div>
-                         </div>
-
-                         <button
-                              className="carousel-control-prev carousel-control-prev-sale"
-                              type="button"
-                              data-bs-target="#carouselExampleControlsSale"
-                              data-bs-slide="prev"
-                         >
-                              <span
-                                   className="carousel-control-prev-icon"
-                                   aria-hidden="true"
-                              ></span>
-                              <span className="visually-hidden">Previous</span>
-                         </button>
-                         <button
-                              className="carousel-control-next carousel-control-next-sale"
-                              type="button"
-                              data-bs-target="#carouselExampleControlsSale"
-                              data-bs-slide="next"
-                         >
-                              <span
-                                   className="carousel-control-next-icon"
-                                   aria-hidden="true"
-                              ></span>
-                              <span className="visually-hidden">Next</span>
-                         </button>
-                    </div>
-               </>
-          );
-     };
+     const [listData, setListData] = useState([]);
+     const [search, setSearch] = useState("");
 
      const responsive = {
           superLargeDesktop: {
@@ -77,45 +29,71 @@ const Content = () => {
           },
      };
 
+     useEffect(() => {
+          getAllProduct();
+     }, []);
+
+     const getAllProduct = async () => {
+          const data = await getAllFakeApi();
+          if (data && +data.status === 200 && data.data.length > 0) {
+               setListData(data.data);
+          }
+     };
      return (
           <div className="container">
-               {contentSale()}
+               {/* {contentSale()} */}
                <div className=" card mt-1">
                     <div className="card-header bg-warning d-flex justify-content-between ">
-                         <span className="text-dark fw-bold fs-3 d-none d-md-block align-middle mt-lg-0 mt-md-3 ">
+                         <span className="text-dark fw-bold fs-3 align-middle mt-lg-0 mt-md-3 ">
                               <i className="fa fa-pied-piper-alt fs-1 text-secondary"></i>{" "}
-                              GIỜ VÀNG DEAL SỐC
+                              Sản phẩm
                          </span>
-                         <span className="ms-4 fs-5 fw-bold mt-2">
-                              Kết thúc trong{" "}
-                              <br className="d-block d-lg-none" />
-                              <span className="badge bg-dark">00</span> :{" "}
-                              <span className="badge bg-dark">00</span> :{" "}
-                              <span className="badge bg-dark">00</span>{" "}
-                         </span>
-                         <span className="ms-4 fs-5 fw-bold mt-2">
-                              Đang diễn ra {"   "}
-                              <br className="d-block d-lg-none" />
-                              <span className="text-danger">10/9 - 15/9</span>
-                         </span>
+                         <div className="search-product">
+                              <input
+                                   type="text"
+                                   class="form-control border-warning input-search"
+                                   placeholder="Search...."
+                                   aria-label="Recipient's username"
+                                   aria-describedby="button-addon2"
+                                   onChange={(e) => setSearch(e.target.value)}
+                              />
+                              <button
+                                   class="btn btn-success text-dark btn-search"
+                                   type="button"
+                                   id="button-addon2"
+                              >
+                                   <i
+                                        class="fa fa-search"
+                                        aria-hidden="true"
+                                   ></i>
+                              </button>
+                         </div>
                     </div>
-                    {/* <div className="card-body row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-2 bg-warning-subtle rounded"> */}
-                    <Carousel responsive={responsive}>
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                         <Product />
-                    </Carousel>
 
-                    {/* </div> */}
+                    <div className="d-grid gap-3">
+                         <Carousel responsive={responsive}>
+                              {listData && listData.length > 0 ? (
+                                   listData
+                                        .filter((item) => {
+                                             return search.toLocaleLowerCase() ===
+                                                  ""
+                                                  ? item
+                                                  : item.title
+                                                         .toLocaleLowerCase()
+                                                         .includes(search);
+                                        })
+                                        .map((item) => {
+                                             return (
+                                                  <>
+                                                       <Product data={item} />
+                                                  </>
+                                             );
+                                        })
+                              ) : (
+                                   <></>
+                              )}
+                         </Carousel>
+                    </div>
                </div>
           </div>
      );

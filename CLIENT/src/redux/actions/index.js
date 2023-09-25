@@ -1,9 +1,3 @@
-export const ADD_DESK = (product) => {
-     return {
-          type: "ADD_DESK",
-          payload: product,
-     };
-};
 export const ADD_PRODUCT = (product) => {
      return {
           type: "ADD_PRODUCT",
